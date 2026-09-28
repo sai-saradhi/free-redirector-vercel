@@ -2,7 +2,7 @@
   "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/:slug((?!admin(?:/|$)).+)",
+      "source": "/:slug((?!api(?:/|$)).+)",
       "destination": "/api/redirect?slug=:slug"
     }
   ]
