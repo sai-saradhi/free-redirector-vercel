@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Redirect Manager</title>
+<link rel="stylesheet" href="/admin/style.css">
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <h1>Redirect Manager</h1>
+      <p>GitHub + Vercel only · no database required</p>
+    </div>
+    <button id="download">Download redirects.json</button>
+  </header>
+
+  <section class="card">
+    <h2>Links</h2>
+    <p>Edit the destinations below, then download the file and replace the project's <code>redirects.json</code>.</p>
+    <div id="links"></div>
+    <button id="add">+ Add link</button>
+  </section>
+
+  <section class="card">
+    <h2>Deploy changes</h2>
+    <ol>
+      <li>Download <code>redirects.json</code>.</li>
+      <li>Replace the file in your GitHub repository.</li>
+      <li>Commit the change.</li>
+      <li>Vercel automatically redeploys.</li>
+    </ol>
+    <p>Your public URLs never change. Only their destinations change.</p>
+  </section>
+</main>
+<script src="/admin/app.js"></script>
+</body>
+</html>

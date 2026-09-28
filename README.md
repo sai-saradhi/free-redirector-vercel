@@ -1,63 +1,47 @@
-# Link Redirector — Vercel + Supabase
+# Free Redirector — Simple Version
 
-A small self-hosted link manager.
+No Supabase. No database. GitHub + Vercel only.
 
-## Features
+## Create a redirect
 
-- Admin login
-- Create custom slugs such as `/yt` or `/sih`
-- Edit destinations instantly
-- Enable/disable links
-- Delete links
-- Copy redirect URLs
-- Redirects are handled server-side
-- Works with a custom domain on Vercel
+Edit `redirects.json`:
 
-## 1. Create the database
+```json
+{
+  "sih": "https://youtube.com/",
+  "google": "https://google.com/"
+}
+```
 
-Create a free Supabase project.
+This creates:
 
-Open **SQL Editor** and run `supabase/schema.sql`.
+- `https://YOUR-DOMAIN/sih`
+- `https://YOUR-DOMAIN/google`
 
-## 2. Deploy
+## Change a destination
 
-Push this folder to GitHub and import the repository into Vercel.
+Change the value in `redirects.json`, commit and push:
 
-Set these environment variables in Vercel:
+```powershell
+git add redirects.json
+git commit -m "Update redirect"
+git push
+```
 
-- `SUPABASE_URL`
-- `SUPABASE_SERVICE_ROLE_KEY`
-- `ADMIN_PASSWORD`
-- `PUBLIC_BASE_URL`
+Vercel automatically deploys the change.
 
-`PUBLIC_BASE_URL` should be your real public URL, for example:
-`https://go.example.com`
-
-Do NOT expose `SUPABASE_SERVICE_ROLE_KEY` in browser code.
-
-## 3. Admin
+## Admin page
 
 Open:
 
-`https://your-domain.com/`
+`https://YOUR-DOMAIN/admin/`
 
-Login using the value configured as `ADMIN_PASSWORD`.
+It lets you edit the JSON visually and download the updated file.
 
-## 4. Custom domain
+Important: this admin page is intentionally a local editor, not a database-backed admin API. Anyone who can open it can generate a redirect configuration file, so do not treat it as a private control panel.
 
-In Vercel:
-Project → Settings → Domains
+## Vercel
 
-Point your domain/subdomain to Vercel.
+Import the GitHub repo into Vercel. No environment variables are required.
 
-Example:
-
-`go.example.com/sih`
-
-can redirect to any destination you choose.
-
-## Security
-
-This is intended for a small personal/team redirect service.
-
-For stronger production security, replace the single admin password with Supabase Auth or another identity provider.
+For a custom domain, add it under Vercel → Project → Settings → Domains.
