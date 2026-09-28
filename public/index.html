@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Link Redirector</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="shell">
+    <section id="loginView" class="card login-card">
+      <div class="brand">
+        <div class="logo">↗</div>
+        <div>
+          <h1>Link Redirector</h1>
+          <p>Private link management</p>
+        </div>
+      </div>
+      <form id="loginForm">
+        <label>Admin password</label>
+        <input id="password" type="password" autocomplete="current-password" required>
+        <button>Sign in</button>
+        <p id="loginError" class="error"></p>
+      </form>
+    </section>
+
+    <section id="appView" class="hidden">
+      <header class="topbar">
+        <div>
+          <div class="brand compact">
+            <div class="logo">↗</div>
+            <div>
+              <h1>Link Redirector</h1>
+              <p>Manage your permanent links</p>
+            </div>
+          </div>
+        </div>
+        <button id="logoutBtn" class="ghost">Log out</button>
+      </header>
+
+      <section class="card create-card">
+        <div>
+          <h2>Create a link</h2>
+          <p>Choose the part after your domain and where it should go.</p>
+        </div>
+        <form id="createForm" class="create-form">
+          <div class="field">
+            <label>Short slug</label>
+            <div class="slug-input"><span>/</span><input id="slug" placeholder="sih" required maxlength="64"></div>
+          </div>
+          <div class="field grow">
+            <label>Destination URL</label>
+            <input id="destination" type="url" placeholder="https://youtube.com/" required>
+          </div>
+          <button>Create link</button>
+        </form>
+        <p id="createError" class="error"></p>
+      </section>
+
+      <section class="card">
+        <div class="section-head">
+          <div>
+            <h2>Your links</h2>
+            <p id="countText">Loading…</p>
+          </div>
+          <button id="refreshBtn" class="ghost">Refresh</button>
+        </div>
+        <div id="links" class="links"></div>
+      </section>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <script src="/app.js"></script>
+</body>
+</html>

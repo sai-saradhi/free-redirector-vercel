@@ -1,0 +1,9 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/:slug((?!api(?:/|$)).+)",
+      "destination": "/api/r/:slug"
+    }
+  ]
+}
